@@ -1,0 +1,23 @@
+class KthLargest:
+    def __init__(self, k: int, nums: List[int]):
+        self.k = k
+        self.pq = nums
+        heapq.heapify(self.pq)
+        while len(self.pq) > self.k:
+            heapq.heappop(self.pq)
+
+    def add(self, val: int) -> int:
+        if self.pq and val < self.pq[0]:
+            return self.pq[0]
+
+        heapq.heappush(self.pq, val)
+        if len(self.pq) > self.k:
+            heapq.heappop(self.pq)
+
+        return self.pq[0]
+        
+
+
+        
+
+        
